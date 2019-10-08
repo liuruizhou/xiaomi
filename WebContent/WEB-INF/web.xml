@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>xiaomi.com</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- 刘锐洲配置文件开始 -->
+	<servlet>
+		<servlet-name>LiuRuizhouEmailServlet</servlet-name>
+		<servlet-class>com.mi.liuruizhou.servlet.EmailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LiuRuizhouEmailServlet</servlet-name>
+		<url-pattern>/LiuRuizhouEmailServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LiuRuizhouGoodsServlet</servlet-name>
+		<servlet-class>com.mi.liuruizhou.servlet.GoodsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LiuRuizhouGoodsServlet</servlet-name>
+		<url-pattern>/LiuRuizhouGoodsServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LiuRuizhouUserServlet</servlet-name>
+		<servlet-class>com.mi.liuruizhou.servlet.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LiuRuizhouUserServlet</servlet-name>
+		<url-pattern>/LiuRuizhouUserServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LiuRuizhouOrdersServlet</servlet-name>
+		<servlet-class>com.mi.liuruizhou.servlet.OrdersServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LiuRuizhouOrdersServlet</servlet-name>
+		<url-pattern>/LiuRuizhouOrdersServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 刘锐洲配置文件结束 -->
+
+	<!-- 汪鑫源配置文件开始 -->
+	<servlet>
+		<servlet-name>WangXinYuanGoodsServlet</servlet-name>
+		<servlet-class>com.wangxinyuan.servlet.GoodsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WangXinYuanGoodsServlet</servlet-name>
+		<url-pattern>/WangXinYuanGoodsServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>WangXinYuanCartServlet</servlet-name>
+		<servlet-class>com.wangxinyuan.servlet.CartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WangXinYuanCartServlet</servlet-name>
+		<url-pattern>/WangXinYuanCartServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 汪鑫源配置文件结束 -->
+
+	<!-- 廖伟成配置文件开始 -->
+	<servlet>
+		<servlet-name>LiaoWeiChengGoodsServlet</servlet-name>
+		<servlet-class>com.mi.liaoweicheng.servlet.LiaoWeiChengGoodsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LiaoWeiChengGoodsServlet</servlet-name>
+		<url-pattern>/LiaoWeiChengGoodsServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 廖伟成配置文件结束 -->
+
+	<!-- 陈胜澡配置文件开始 -->
+	<!--注解配置 -->
+	<!-- 陈胜澡配置文件结束 -->
+
+	<!-- 黄荣康配置文件开始 -->
+	<!-- 商品版本表 -->
+	<servlet>
+		<servlet-name>HuangRongKangEditionServlet</servlet-name>
+		<servlet-class>com.huangrongkang.servlet.HuangRongKangEditionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HuangRongKangEditionServlet</servlet-name>
+		<url-pattern>/HuangRongKangEditionServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 颜色表 -->
+	<servlet>
+		<servlet-name>HuangRongKangColorServlet</servlet-name>
+		<servlet-class>com.huangrongkang.servlet.HuangRongKangColorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HuangRongKangColorServlet</servlet-name>
+		<url-pattern>/HuangRongKangColorServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<!-- 商品表 -->
+		<servlet-name>HuangRongKangGoodsServlet</servlet-name>
+		<servlet-class>com.huangrongkang.servlet.HuangRongKangGoodsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HuangRongKangGoodsServlet</servlet-name>
+		<url-pattern>/HuangRongKangGoodsServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 登录 -->
+	<servlet>
+		<servlet-name>HuangRongKangLoginServlet</servlet-name>
+		<servlet-class>com.huangrongkang.servlet.HuangRongKangLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HuangRongKangLoginServlet</servlet-name>
+		<url-pattern>/HuangRongKangLoginServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 黄荣康配置文件结束 -->
+
+</web-app>

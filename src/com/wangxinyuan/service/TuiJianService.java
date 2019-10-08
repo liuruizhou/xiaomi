@@ -1,0 +1,9 @@
+package com.wangxinyuan.service;
+
+import java.util.List;
+
+import com.wangxinyuan.dao.po.Goods;
+
+public interface TuiJianService {
+	public List<Goods> listTuiJianByTypeId(int id);
+}
