@@ -1,0 +1,8 @@
+jdk       1.8
+comtact   8.5/8.0
+eclipse   MARS.1（推荐）
+数据库    MySql
+名称：    xiaomi
+字符：    utf8
+排序：    utf8_bin
+浏览器输入：localhost:8080/xiaomi.com
