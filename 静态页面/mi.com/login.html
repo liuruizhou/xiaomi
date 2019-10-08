@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员登录</title>
+		<link rel="stylesheet" type="text/css" href="./css/login/login.css">
+		<style>
+			#yanzhengmayzMrg{
+				padding-left: 20px;
+			}
+			.err{
+				color: red;
+			}
+			.success{
+				color: greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- login -->
+		<div class="top center">
+			<div class="logo center">
+				<a href="./index.html" target="_blank"><img src="./image/mistore_logo.png" alt=""></a>
+			</div>
+		</div>
+		<form  method="post" action="./login.php" class="form center">
+		<div class="login">
+			<div class="login_center">
+				<div class="login_top">
+					<div class="left fl">会员登录</div>
+					<div class="right fr">您还不是我们的会员？<a href="./register.html" target="_self">立即注册</a></div>
+					<div class="clear"></div>
+					<div class="xian center"></div>
+				</div>
+				<div class="login_main center" style="background: lightgray;">
+					<div class="username">用户名:&nbsp;<input  style="color: black;" class="shurukuang" type="text" name="username" placeholder="请输入你的用户名" /></div>
+					<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;<input style="color: black;" class="shurukuang" type="password" name="password" placeholder="请输入你的密码"/></div>
+					<div class="username">
+						<div class="left fl">验证码:&nbsp;<input style="color: black;" class="yanzhengma" type="text" name="username" placeholder="请输入验证码" id="yanzhengmayz"/></div>
+						<div class="right fl"><canvas id="canvas" width="100" height="43" style="background: white;" title="看不清，点击刷新验证码"></canvas></div>
+						<div class="clear"><span id="yanzhengmayzMrg"></span></div>
+					</div>					
+					<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+					<script type="text/javascript">
+						$(function() {
+							var show_num = [];
+							draw(show_num);
+					
+							$("#canvas").on('click', function() {
+								draw(show_num);
+							});
+							$("#yanzhengmayz").keyup(function(){
+								var val = $("#yanzhengmayz").val().toLowerCase();
+								var num = show_num.join("");
+								if(val == '') {
+									$("#yanzhengmayzMrg").html("请输入验证码！").addClass("err");
+									$("#login_submit_btn").attr("disabled","disabled").attr("title","请输入验证码");
+								} else if(val == num) {
+									$("#yanzhengmayzMrg").html("验证成功").addClass("success")
+									$("#login_submit_btn").removeAttr("disabled");
+								} else {
+									$("#yanzhengmayzMrg").html("验证码错误！请重新输入！").addClass("err");
+									$("#login_submit_btn").attr("disabled","disabled").attr("title","请输入正确的验证码");
+								}
+							});
+						});
+					
+						function draw(show_num) {
+							var canvas_width = $('#canvas').width();
+							var canvas_height = $('#canvas').height();
+							var canvas = document.getElementById("canvas"); //获取到canvas的对象，演员
+							var context = canvas.getContext("2d"); //获取到canvas画图的环境，演员表演的舞台
+							canvas.width = canvas_width;
+							canvas.height = canvas_height;
+							var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+							var aCode = sCode.split(",");
+							var aLength = aCode.length; //获取到数组的长度
+					
+							for(var i = 0; i <= 3; i++) {
+								var j = Math.floor(Math.random() * aLength); //获取到随机的索引值
+								var deg = Math.random() * 30 * Math.PI / 180; //产生0~30之间的随机弧度
+								var txt = aCode[j]; //得到随机的一个内容
+								show_num[i] = txt.toLowerCase();
+								var x = 10 + i * 20; //文字在canvas上的x坐标
+								var y = 20 + Math.random() * 8; //文字在canvas上的y坐标
+								context.font = "bold 23px 微软雅黑";
+					
+								context.translate(x, y);
+								context.rotate(deg);
+					
+								context.fillStyle = randomColor();
+								context.fillText(txt, 0, 0);
+					
+								context.rotate(-deg);
+								context.translate(-x, -y);
+							}
+							for(var i = 0; i <= 5; i++) { //验证码上显示线条
+								context.strokeStyle = randomColor();
+								context.beginPath();
+								context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+								context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+								context.stroke();
+							}
+							for(var i = 0; i <= 30; i++) { //验证码上显示小点
+								context.strokeStyle = randomColor();
+								context.beginPath();
+								var x = Math.random() * canvas_width;
+								var y = Math.random() * canvas_height;
+								context.moveTo(x, y);
+								context.lineTo(x + 1, y + 1);
+								context.stroke();
+							}
+						}
+					
+						function randomColor() { //得到随机的颜色值
+							var r = Math.floor(Math.random() * 256);
+							var g = Math.floor(Math.random() * 256);
+							var b = Math.floor(Math.random() * 256);
+							return "rgb(" + r + "," + g + "," + b + ")";
+						}
+					</script>
+					
+				</div>
+				<div class="login_submit">
+					<input class="submit" type="submit" name="submit" id="login_submit_btn" title="请输入验证码" value="立即登录" disabled>
+				</div>
+				
+			</div>
+		</div>
+		</form>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/comm.css">
+	<link rel="stylesheet" type="text/css" href="css/detail.css">
+	<link rel="stylesheet" type="text/css" href="css/media_detail.css">
+		<!--剩余部分结束-->
+	<footer id="footer" class="site-footer"style="background-color: whitesmoke;">
+		<div style="width: 105%;background: whitesmoke;">
+		<header class="wraper footer-top">
+			<ul>
+				<li><a href=""><span>icon</span>1小时快修服务</a></li>
+				<li><a href=""><span>icon</span>1小时快修服务</a></li>
+				<li><a href=""><span>icon</span>1小时快修服务</a></li>
+				<li><a href=""><span>icon</span>1小时快修服务</a></li>
+				<li><a href=""><span>icon</span>1小时快修服务</a></li>
+			</ul>
+		</header>
+		
+		<section class="wraper footer-middle" style="background-color: whitesmoke;">
+			<aside class="footer-right connect">
+				<p class="tel">400-100-5678</p>
+				<p class="detail">
+				周一至周日 8:00-18:00
+				（仅收市话费）
+				</p>
+				<a href="" class="btn"><span></span>24小时在线客服</a>
+			</aside>
+			<section class="footer-left menu-columns" >
+				<ul class="menu">
+					<li>
+						<dl>
+							<dt>帮助中心</dt>
+							<dd>账户管理</dd>
+							<dd>购物指南</dd>
+							<dd>订单操作</dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="menu">
+					<li>
+						<dl>
+							<dt>帮助中心</dt>
+							<dd>账户管理</dd>
+							<dd>购物指南</dd>
+							<dd>订单操作</dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="menu">
+					<li>
+						<dl>
+							<dt>帮助中心</dt>
+							<dd>账户管理</dd>
+							<dd>购物指南</dd>
+							<dd>订单操作</dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="menu">
+					<li>
+						<dl>
+							<dt>帮助中心</dt>
+							<dd>账户管理</dd>
+							<dd>购物指南</dd>
+							<dd>订单操作</dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="menu">
+					<li>
+						<dl>
+							<dt>帮助中心</dt>
+							<dd>账户管理</dd>
+							<dd>购物指南</dd>
+							<dd>订单操作</dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="menu">
+					<li>
+						<dl>
+							<dt>帮助中心</dt>
+							<dd>账户管理</dd>
+							<dd>购物指南</dd>
+							<dd>订单操作</dd>
+						</dl>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<footer class="footer-bottom">
+			<div class="wraper">
+				<div class="info">
+					<div class="links"><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a><a href="#">小米商城</a></div>
+					<p class="desc">©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号 
+					违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+				</div>
+				<ul class="img-list">
+					<li><a href=""><img src="./images/i_trust.png"></a></li>
+					<li><a href=""><img src="./images/i_company.png"></a></li>
+					<li><a href=""><img src="./images/i_cmt.png"></a></li>
+					<li><a href=""><img src="./images/i_protect.png"></a></li>
+				</ul>
+				<h3>探索黑科技，小米为发烧而生</h3>
+			</div>
+		</footer>
+		</div>
+	</footer>
+	</body>
+</html>
